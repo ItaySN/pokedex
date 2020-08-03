@@ -22,9 +22,14 @@ function createContainer(data)
 
 
 const searchPokemon = async (pokemonId) => {
+  try{
     const { data } = await axios.get(`http://pokeapi.co/api/v2/pokemon/${pokemonId}`);
   createContainer(data);
-  console.log(data)
+  }
+  catch(e){
+    alert(`You get an Error : ${e.message}`);
+    return e;
+  }
 };
 
 //searchPokemon();
