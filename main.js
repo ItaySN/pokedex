@@ -21,14 +21,20 @@ function createContainer(data)
 
   //types:
   for(let i=0;i<data.types.length; i++){
-    let divType = document.createElement('div');
-    divType.innerHTML = `type ${i+1} :  ${data.types[i].type.name}`;
+    let divType   = document.createElement('div');
+    let typeNameLabel = document.createElement('label');
+    typeNameLabel.innerHTML = `${data.types[i].type.name}`;
+    typeNameLabel.addEventListener('click',()=>{
+      getPokemonWithSameType(typeNameLabel.innerText)
+      .then((res) => typeNameLabel.appendChild(res));
+    });
+    divType.innerText = `type ${i+1} :  `;
+    divType.appendChild(typeNameLabel);
     tempPoke.push(divType);
   }
   tempPoke.forEach(element=>{containerDiv.appendChild(element)});
   let hr = document.createElement('hr');
   containerDiv.appendChild(hr);
-  
   
 }
 
@@ -45,6 +51,30 @@ const searchPokemon = async (pokemonId) => {
   }
 };
 
+async function getPokemonWithSameType(typeNameLabel)
+{
+  
+  let pokemonList = document.createElement('ul');
+ 
+    debugger;
+    const{ data } = await axios.get(`http://pokeapi.co/api/v2/type/${typeNameLabel}`);
+    console.log(data);
+    data.pokemon.forEach((pokemons)=>{
+      let liPoke = document.createElement('li');
+      liPoke.innerText = pokemons.pokemon.name;
+      pokemonList.appendChild(liPoke);
+    });
+    debugger;
+    return pokemonList;
+  
+  /*
+  catch(e){
+    alert(`You get an Error : ${e.message}`);
+    return e;
+  }
+  */
+
+}
 //searchPokemon();
 searchButton.addEventListener('click',()=>{searchPokemon((searchInput.value))
 });
