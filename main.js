@@ -30,7 +30,8 @@ const searchPokemon = async (pokemonId) => {
 
 
 //searchPokemon();
-searchButton.addEventListener('click',()=>{ searchPokemon(parseInt(searchInput.value))});
+searchButton.addEventListener('click',()=>{searchPokemon(parseInt(searchInput.value))
+});
 
 
 
