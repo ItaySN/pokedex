@@ -1,5 +1,5 @@
 const searchInput = document.getElementById("search");
-searchInput.placeholder="Search...";
+searchInput.placeholder="Search a pokemon...";
 const searchButton = document.getElementById("searchButton");
 const containerDiv = document.getElementById("containerDiv");
 
@@ -13,9 +13,9 @@ function createContainer(data)
                     document.createElement('img')
                   
                   ];
-  tempPoke[0].innerHTML = `name :   ${data.name}`; 
-  tempPoke[1].innerHTML = `height :  ${data.height}` ; 
-  tempPoke[2].innerHTML = `weight :   ${data.weight}`; 
+  tempPoke[0].innerHTML = `Name of the pokemon :   ${data.name}`; 
+  tempPoke[1].innerHTML = `Height of the pokemon :  ${data.height}` ; 
+  tempPoke[2].innerHTML = `Weight of the pokemon :   ${data.weight}`; 
   tempPoke[3].src = data.sprites.front_default;
   tempPoke[3].addEventListener('mouseover',()=>{tempPoke[3].src=data.sprites.back_default});
   tempPoke[3].addEventListener('mouseout',()=>{tempPoke[3].src=data.sprites.front_default})
@@ -43,7 +43,7 @@ function createContainer(data)
        
       
     });
-    divType.innerText = `type ${i+1} :  `;
+    divType.innerText = `The ${i+1} type of the pokemon :  `;
     divType.appendChild(typeNameLabel);
     tempPoke.push(divType);
   }
