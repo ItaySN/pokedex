@@ -1,5 +1,5 @@
 const searchInput = document.getElementById("search");
-searchInput.placeholder="Search..."
+searchInput.placeholder="Search...";
 const searchButton = document.getElementById("searchButton");
 const containerDiv = document.getElementById("containerDiv");
 
