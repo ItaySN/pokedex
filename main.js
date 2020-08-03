@@ -1,14 +1,36 @@
 const searchInput = document.getElementById("search");
 searchInput.placeholder="Search..."
 const searchButton = document.getElementById("searchButton");
-searchButton.addEventListener('click',()=> searchButton(searchInput.value));
+const containerDiv = document.getElementById("containerDiv");
 
+
+function createContainer(data)
+{
+ const tempPoke = [ document.createElement('div') , 
+                    document.createElement('div') , 
+                    document.createElement('div'), 
+                    document.createElement('img')];
+  tempPoke[0].innerHTML = `name :   ${data.name}`; 
+  tempPoke[1].innerHTML = `height :  ${data.height}` ; 
+  tempPoke[2].innerHTML = `weight :   ${data.weight}`; 
+  tempPoke[3].src = data.sprites.front_default;
+  
+  tempPoke.forEach(element=>{containerDiv.appendChild(element)});
+}
 
 
 const searchPokemon = async (pokemonId) => {
   const { data } = await axios.get(`http://pokeapi.co/api/v2/pokemon/${pokemonId}`);
+  createContainer(data);
   console.log(data)
 };
 
-searchPokemon();
+
+
+//searchPokemon();
+searchButton.addEventListener('click',()=>{ searchPokemon(parseInt(searchInput.value))});
+
+
+
+
 
