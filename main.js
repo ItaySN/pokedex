@@ -22,15 +22,13 @@ function createContainer(data)
 
 
 const searchPokemon = async (pokemonId) => {
-  const { data } = await axios.get(`http://pokeapi.co/api/v2/pokemon/${pokemonId}`);
+    const { data } = await axios.get(`http://pokeapi.co/api/v2/pokemon/${pokemonId}`);
   createContainer(data);
   console.log(data)
 };
 
-
-
 //searchPokemon();
-searchButton.addEventListener('click',()=>{searchPokemon(parseInt(searchInput.value))
+searchButton.addEventListener('click',()=>{searchPokemon((searchInput.value))
 });
 
 
