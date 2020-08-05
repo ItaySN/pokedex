@@ -54,6 +54,7 @@ function createContainer(data)
 }
 
 
+/*
 const searchPokemon = async (pokemonId) => {
   try{
     const { data } = await axios.get(`http://pokeapi.co/api/v2/pokemon/${pokemonId}`);
@@ -65,32 +66,15 @@ const searchPokemon = async (pokemonId) => {
     return e;
   }
 };
-
-/*
-async function createListOfSameTypePoke(typeNameLabel)
-{
-  
-  let pokemonList = document.createElement('ul');
- 
-    try{
-      const{ data } = await axios.get(`http://pokeapi.co/api/v2/type/${typeNameLabel}`);
-      console.log(data);
-      data.pokemon.forEach((pokemons)=>{
-      let liPoke = document.createElement('li');
-      liPoke.innerText = pokemons.pokemon.name;
-      pokemonList.appendChild(liPoke);
-    });
-    return pokemonList;
-    }
-  
-  catch(e){
-    alert(`You get an Error : ${e.message}`);
-    return e;
-  }
-}
 */
 
-
+const searchPokemon = (id) => {
+  return fetch(`http://pokeapi.co/api/v2/pokemon/${id}`)
+  .then(res =>  res.json())
+  .then(data => 
+    {createContainer(data)})
+  .catch(er => console.log(er));
+}
 
 async function getPokemonWithSameType(typeNameLabel)
 {
